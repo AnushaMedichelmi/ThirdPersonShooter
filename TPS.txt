@@ -1,0 +1,16 @@
+Design Document for Third Person Shooter Game
+
+1.Design the Terrain.
+2.Download the assests.
+3.Adding the Player.
+4.Player Animations
+5.PlayerMovement Script.
+6.Adding sounds to the player
+7.Adding the Enemey 
+8.Enemy Animations
+9.EnemyController Script(StateMachine)
+10.Adding sounds to the enemy
+11.Making Enemy follow the Player
+12.Enemy attack the player and health of the player should drecrease.
+13.Player shoot the enemies and enemies should die.
+14.End of the Game
