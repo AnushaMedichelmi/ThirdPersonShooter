@@ -15,7 +15,7 @@ public class GunScript : MonoBehaviour
     public Transform firePoint;
     [SerializeField]
     ParticleSystem particleSystem;
-    public AudioSource audio;
+    //public AudioSource audio;
     void Start()
     {
 
@@ -29,8 +29,8 @@ public class GunScript : MonoBehaviour
         {
             if (Input.GetButton("Fire1"))
             {
-                //audio
-                audio.Play();
+                
+               // audio.Play();
                 timer = 0f;
                 ToFireGun();
             }
