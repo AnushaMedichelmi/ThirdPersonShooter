@@ -9,7 +9,7 @@ public class EnemyScripts : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = startingHealth;         //
+        currentHealth = startingHealth;         
     }
 
     // Update is called once per frame

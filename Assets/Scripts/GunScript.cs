@@ -14,7 +14,7 @@ public class GunScript : MonoBehaviour
     float timer;
     public Transform firePoint;
     [SerializeField]
-    ParticleSystem particleSystem;
+    ParticleSystem particleSystem;      
     //public AudioSource audio;
     void Start()
     {
