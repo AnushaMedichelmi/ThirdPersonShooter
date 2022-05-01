@@ -10173,7 +10173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a429c64c7aca4ed4d847c58dac9e182a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 410537845716243679, guid: 846a55e3c61e75640835ec9460f25c58, type: 3}
   Enemy: []
 --- !u!1001 &1725398696
 PrefabInstance:
