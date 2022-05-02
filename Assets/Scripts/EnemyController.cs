@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,11 @@ public class EnemyController : MonoBehaviour
     public Transform target;
     NavMeshAgent agent;
     public static EnemyController instance;            //Singleton
+   // public float currentTime;
+   // public float attackTime;
+   // bool isGameOver = false;
+
+    PlayerMovement playerMovement;
     private void Awake()
     {
         if (instance == null)
@@ -33,6 +39,7 @@ public class EnemyController : MonoBehaviour
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+      //  playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
         Debug.Log(target);
     }
 
@@ -81,11 +88,32 @@ public class EnemyController : MonoBehaviour
             state = STATE.MOVE;
         }
 
-
-
-
+       
         Debug.Log("Attack");
+
+       // AttackPlayer();
+       
     }
+
+   /* private void AttackPlayer()
+    {
+        currentTime = currentTime - Time.deltaTime;
+        if (currentTime <= 0f)
+        {
+            playerMovement.health--;
+            //GetComponent<PlayerController>().health--;
+            Debug.Log(playerMovement.health);
+            currentTime = attackTime;
+
+        }
+
+        if (playerMovement.health == 0)
+        {
+            isGameOver = true;
+            Damage();
+            // PlayerController.GameOver();
+        }
+    }*/
 
     public void Damage()
     {

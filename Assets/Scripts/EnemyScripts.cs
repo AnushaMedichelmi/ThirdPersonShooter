@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyScripts : MonoBehaviour
 {
     [SerializeField] int startingHealth;            //Declaring the health
     [SerializeField] int currentHealth;             //Declaring current health of the enemy
+    public Slider healthBar;
     // Start is called before the first frame update
     void Start()
     {
