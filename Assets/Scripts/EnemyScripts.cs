@@ -8,11 +8,15 @@ public class EnemyScripts : MonoBehaviour
 {
     [SerializeField] int startingHealth;            //Declaring the health
     [SerializeField] int currentHealth;             //Declaring current health of the enemy
+   // public GameObject particleEffect;
+   public ParticleSystem particleEffect;
    // public Slider healthBar;
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = startingHealth;         
+        currentHealth = startingHealth; 
+       // particleEffect= particleEffect.GetComponent<ParticleSystem>();
+     
     }
 
     // Update is called once per frame
@@ -24,14 +28,19 @@ public class EnemyScripts : MonoBehaviour
     public void DamageMethod(int damageAmount)
     {
         currentHealth -= damageAmount;
-        
-       // healthBar.value = currentHealth;
+         
+       
+
+
+
+        // healthBar.value = currentHealth;
 
         Debug.Log("In damage method");
         if (currentHealth <= 0)
         {
             DeathMethod();
             Debug.Log("Health :" + currentHealth);
+
            
         }
         Debug.Log("Health :" + currentHealth);
@@ -40,6 +49,9 @@ public class EnemyScripts : MonoBehaviour
 
     private void DeathMethod()
     {
-        gameObject.SetActive(false);
+      
+            gameObject.SetActive(false);
+        
     }
 }
+
