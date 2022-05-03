@@ -10,9 +10,9 @@ public class EnemyController : MonoBehaviour
     public Transform target;
     NavMeshAgent agent;
     public static EnemyController instance;            //Singleton
-   // public float currentTime;
-   // public float attackTime;
-   // bool isGameOver = false;
+    public float currentTime;
+    public float attackTime;
+    bool isGameOver = false;
 
     PlayerMovement playerMovement;
     private void Awake()
@@ -35,11 +35,11 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-
+        currentTime = attackTime;
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-      //  playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
+       playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
         Debug.Log(target);
     }
 
@@ -83,7 +83,7 @@ public class EnemyController : MonoBehaviour
         // anim.SetBool("Run", false);
         anim.SetBool("Attack", true);
         anim.SetBool("Death", false);
-        //transform.LookAt(target.transform.position);
+        transform.LookAt(target.transform.position);
         if (Vector3.Distance(target.position, this.transform.position) >= 10f)
         {
             state = STATE.MOVE;
@@ -91,12 +91,13 @@ public class EnemyController : MonoBehaviour
 
        
         Debug.Log("Attack");
-
-       // AttackPlayer();
        
+
+        AttackPlayer();
+
     }
 
-   /* private void AttackPlayer()
+    private void AttackPlayer()
     {
         currentTime = currentTime - Time.deltaTime;
         if (currentTime <= 0f)
@@ -111,10 +112,11 @@ public class EnemyController : MonoBehaviour
         if (playerMovement.health == 0)
         {
             isGameOver = true;
-            Damage();
-            // PlayerController.GameOver();
+
+            playerMovement.DamagePlayer();
+             playerMovement.GameOver();
         }
-    }*/
+    }
 
     public void Damage()
     {

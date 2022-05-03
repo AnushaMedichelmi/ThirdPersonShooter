@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
@@ -12,7 +13,8 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     public float rotateSpeed;
    // public Slider healthBar;
-    //public int health;
+    public int health;
+    public Text textHealth;
    
 
     void Start()
@@ -39,5 +41,18 @@ public class PlayerMovement : MonoBehaviour
         {
             characterController.SimpleMove(transform.forward * Time.deltaTime * inputZ);    //Movement of the player using Simple move 
         }
+
+        // healthBar.value = (float)health/40f;
+        textHealth.text ="Health: "+ health.ToString();
+    }
+
+    public void GameOver()
+    {
+
+    }
+
+    public void DamagePlayer()
+    {
+        Destroy(gameObject);
     }
 }
