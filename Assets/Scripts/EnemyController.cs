@@ -103,10 +103,10 @@ public class EnemyController : MonoBehaviour
         currentTime = currentTime - Time.deltaTime;
         if (currentTime <= 0f)
         {
-            playerMovement.health--;
-            //GetComponent<PlayerController>().health--;
-            Debug.Log(playerMovement.health);
-            currentTime = attackTime;
+           playerMovement.health--;
+           // GetComponent<PlayerController>().health--;
+          Debug.Log(playerMovement.health);
+           currentTime = attackTime;
 
         }
 

@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     int maxAmmo = 100;
     int maxMedical = 100;
     CapsuleCollider colliders;
+    public GameObject ragdollPrefab;
     // public Text textHealth;
 
 
@@ -58,6 +59,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void DamagePlayer()
     {
+        GameObject tempRd = Instantiate(ragdollPrefab, this.transform.position, this.transform.rotation);
+
         Destroy(gameObject);
     }
 
