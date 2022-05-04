@@ -12,15 +12,20 @@ public class PlayerMovement : MonoBehaviour
     CharacterController characterController;
     Animator animator;
     public float rotateSpeed;
-   // public Slider healthBar;
+    public Slider healthBar;
     public int health;
-    public Text textHealth;
-   
+    int ammo = 50;
+    int maxAmmo = 100;
+    int maxMedical = 100;
+    CapsuleCollider colliders;
+    // public Text textHealth;
+
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();      //To get the component
         animator = GetComponentInChildren<Animator>();
+        colliders = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
@@ -42,8 +47,8 @@ public class PlayerMovement : MonoBehaviour
             characterController.SimpleMove(transform.forward * Time.deltaTime * inputZ);    //Movement of the player using Simple move 
         }
 
-        // healthBar.value = (float)health/40f;
-        textHealth.text ="Health: "+ health.ToString();
+         healthBar.value = (float)health/40f;
+       // textHealth.text ="Health: "+ health.ToString();
     }
 
     public void GameOver()
@@ -54,5 +59,22 @@ public class PlayerMovement : MonoBehaviour
     public void DamagePlayer()
     {
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ammo")
+        {
+            ammo = Mathf.Clamp(ammo + 20, 0, maxAmmo);
+            Debug.Log("Collected ammo");
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Medical")
+        {
+            health = Mathf.Clamp(health + 20, 0, maxMedical);
+            Debug.Log("Collected health");
+            Destroy(collision.gameObject);
+        }
     }
 }
