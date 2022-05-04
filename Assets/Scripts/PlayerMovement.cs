@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         float inputX = Input.GetAxis("Horizontal") * playerSpeed;        //Movement of the player in horizontal direction
         float inputZ = Input.GetAxis("Vertical") * playerSpeed;
         Vector3 movement = new Vector3(inputX, 0f, inputZ);
-        //characterController.SimpleMove(movement*Time.deltaTime);
+        
         animator.SetFloat("Speed", movement.magnitude);                //To make player from idle to run
         /* if (movement.magnitude > 0f)
          {
@@ -47,8 +47,8 @@ public class PlayerMovement : MonoBehaviour
             characterController.SimpleMove(transform.forward * Time.deltaTime * inputZ);    //Movement of the player using Simple move 
         }
 
-         healthBar.value = (float)health/40f;
-       // textHealth.text ="Health: "+ health.ToString();
+        healthBar.value = (float)health / 100;
+        // textHealth.text ="Health: "+ health.ToString();
     }
 
     public void GameOver()
@@ -61,20 +61,26 @@ public class PlayerMovement : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Ammo")
+        /*if (other.gameObject.tag == "Spawn")
+        {
+            Debug.Log("Hello");
+            EnemySpawning.instance.AddToPool();
+        }*/
+
+        if (other.gameObject.tag == "Ammo")
         {
             ammo = Mathf.Clamp(ammo + 20, 0, maxAmmo);
             Debug.Log("Collected ammo");
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
         }
-
-        if (collision.gameObject.tag == "Medical")
+        if (other.gameObject.tag == "Medical")
         {
             health = Mathf.Clamp(health + 20, 0, maxMedical);
             Debug.Log("Collected health");
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
         }
     }
 }
