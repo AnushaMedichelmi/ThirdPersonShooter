@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     public float currentTime;
     public float attackTime;
     bool isGameOver = false;
+   // public GameObject ragdollPrefab;
 
     PlayerMovement playerMovement;
     private void Awake()
@@ -40,7 +41,7 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
        playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
-        Debug.Log(target);
+        //Debug.Log(target);
     }
 
     // Update is called once per frame
@@ -68,7 +69,7 @@ public class EnemyController : MonoBehaviour
     {
         // anim.SetBool("Run", true);
         anim.SetBool("Attack", false);
-        agent.stoppingDistance = 10f;
+        agent.stoppingDistance = 3f;
 
         if (Vector3.Distance(target.position, this.transform.position) <= 20f)
         {
@@ -123,7 +124,15 @@ public class EnemyController : MonoBehaviour
         anim.SetBool("Attack", false);
 
         anim.SetBool("Death", true);
-
+      //  GameObject tempRd = Instantiate(ragdollPrefab, this.transform.position, this.transform.rotation);
+        this.gameObject.SetActive(false);
+        /*
+        GameObject temp = EnemySpawning.instance.EnemiesRagDollFromPool();
+        if(temp!=null)
+        {
+            temp.SetActive(false);
+            temp.transform.position = this.transform.position;
+        }*/
         Debug.Log("Dead");
     }
     public void Win()
