@@ -41,7 +41,7 @@ public class GunScript : MonoBehaviour
     private void ToFireGun()
     {
         particleSystem.Play();
-        //To add audio source
+       
         Debug.DrawRay(firePoint.position, transform.forward *100, Color.red, 5f);
         Ray ray = new Ray(firePoint.position, transform.forward);
 

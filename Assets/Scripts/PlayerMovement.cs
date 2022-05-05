@@ -19,11 +19,15 @@ public class PlayerMovement : MonoBehaviour
     int maxMedical = 100;
     CapsuleCollider colliders;
     public GameObject ragdollPrefab;
+    public GameObject gameOverImage;
+    
+   // public Text gameOverText;
     // public Text textHealth;
 
 
     void Start()
     {
+        
         characterController = GetComponent<CharacterController>();      //To get the component
         animator = GetComponentInChildren<Animator>();
         colliders = GetComponent<CapsuleCollider>();
@@ -52,16 +56,20 @@ public class PlayerMovement : MonoBehaviour
         // textHealth.text ="Health: "+ health.ToString();
     }
 
-    public void GameOver()
+   /* public void GameOver()
     {
-
-    }
+        gameOverText.GetComponent<Text>().enabled = true;
+    }*/
 
     public void DamagePlayer()
     {
         GameObject tempRd = Instantiate(ragdollPrefab, this.transform.position, this.transform.rotation);
-
+       // gameOverText.enabled = true;
+        //gameOverImage.enabled = true;
+        gameOverImage.SetActive(true);
+        
         Destroy(gameObject);
+        
     }
 
     

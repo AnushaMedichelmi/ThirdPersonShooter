@@ -119,9 +119,20 @@ public class EnemyController : MonoBehaviour
             playerMovement.DamagePlayer();
              playerMovement.GameOver();
         }*/
-        playerMovement.health--;
-        
+
+        if (playerMovement.health >= 0f)
+        {
+            playerMovement.health--;
+        }
+
         Debug.Log(playerMovement.health);
+        if (playerMovement.health == 0)
+        {
+            isGameOver = true;
+
+            playerMovement.DamagePlayer();
+            //playerMovement.GameOver();
+        }
     }
 
     public void Damage()
@@ -132,9 +143,6 @@ public class EnemyController : MonoBehaviour
       
         //  GameObject tempRd = Instantiate(ragdollPrefab, this.transform.position, this.transform.rotation);
         this.gameObject.SetActive(false);
-        
-
-
        
 
         Debug.Log("Dead");
