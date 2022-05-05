@@ -39,15 +39,19 @@ public class EnemyScripts : MonoBehaviour
 
            
         }
-        Debug.Log("Health :" + currentHealth);
+      
         
     }
 
     private void DeathMethod()
     {
      // particleEffect.Play();
+
             gameObject.SetActive(false);
-        
+        Debug.Log("Enemy Dead");
+        GameObject.Find("ScoreManager").GetComponent<ScoreManagerScript>().Score(10);
+
+
     }
 }
 

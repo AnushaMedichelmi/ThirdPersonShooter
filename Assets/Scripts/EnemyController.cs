@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     public float currentTime;
     public float attackTime;
     bool isGameOver = false;
+    float timer;
    // public GameObject ragdollPrefab;
 
     PlayerMovement playerMovement;
@@ -94,13 +95,14 @@ public class EnemyController : MonoBehaviour
         Debug.Log("Attack");
        
 
-        AttackPlayer();
+        //AttackPlayer();
 
     }
 
     private void AttackPlayer()
     {
-        currentTime = currentTime - Time.deltaTime;
+        /*currentTime = currentTime - Time.deltaTime;
+        
         if (currentTime <= 0f)
         {
            playerMovement.health--;
@@ -116,7 +118,10 @@ public class EnemyController : MonoBehaviour
 
             playerMovement.DamagePlayer();
              playerMovement.GameOver();
-        }
+        }*/
+        playerMovement.health--;
+        
+        Debug.Log(playerMovement.health);
     }
 
     public void Damage()
@@ -124,15 +129,14 @@ public class EnemyController : MonoBehaviour
         anim.SetBool("Attack", false);
 
         anim.SetBool("Death", true);
-      //  GameObject tempRd = Instantiate(ragdollPrefab, this.transform.position, this.transform.rotation);
+      
+        //  GameObject tempRd = Instantiate(ragdollPrefab, this.transform.position, this.transform.rotation);
         this.gameObject.SetActive(false);
-        /*
-        GameObject temp = EnemySpawning.instance.EnemiesRagDollFromPool();
-        if(temp!=null)
-        {
-            temp.SetActive(false);
-            temp.transform.position = this.transform.position;
-        }*/
+        
+
+
+       
+
         Debug.Log("Dead");
     }
     public void Win()
